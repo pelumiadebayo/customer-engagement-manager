@@ -1,0 +1,12 @@
+{
+  "name": "client-engagement-app",
+  "version": "1.0.0",
+  "description": "engagement with aiiburtel customers",
+  "main": "home.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "home.html"
+  },
+  "author": "Pelumi Adebayo adepelumi1996@gmail.com",
+  "license": "ISC"
+}

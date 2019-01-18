@@ -1,0 +1,17 @@
+.parent{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    height: 100vh;
+}
+.box {
+    font-size: 100%;
+    padding: 10px;
+}
+.first{
+    background: gold;
+}
+.second{
+    flex: 2;
+    background: mediumaquamarine;
+}
