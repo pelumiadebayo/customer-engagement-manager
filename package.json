@@ -8,5 +8,6 @@
     "start": "home.html"
   },
   "author": "Pelumi Adebayo adepelumi1996@gmail.com",
-  "license": "ISC"
+  "license": "ISC",
+  "NODE_VERSION": "5.6.0"
 }
