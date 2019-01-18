@@ -1,6 +1,6 @@
 CKEDITOR.replace('mailTextArea', {
     height: 260,
-    width: 700,
+    width: 500,
 });
 document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.fixed-action-btn');

@@ -112,7 +112,7 @@ form{
 #editor
     {
         margin: auto;
-        width: 350px;
+        width: 300px;
         min-height: 400px;
     }
      @media only screen and (min-width : 500px) {
