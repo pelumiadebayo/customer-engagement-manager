@@ -1,11 +1,11 @@
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyCxyqOXzuvtsGMMemiIVfOIgnSnj9BF6v4",
-    authDomain: "aiiburtel-5a752.firebaseapp.com",
-    databaseURL: "https://aiiburtel-5a752.firebaseio.com",
-    projectId: "aiiburtel-5a752",
-    storageBucket: "aiiburtel-5a752.appspot.com",
-    messagingSenderId: "39758121316"
+    apiKey: "AIzaSyDkQtf0m_J285chLPN33FKzu9S_Qw4mEFI",
+    authDomain: "customer-engagement-manager.firebaseapp.com",
+    databaseURL: "https://customer-engagement-manager.firebaseio.com",
+    projectId: "customer-engagement-manager",
+    storageBucket: "customer-engagement-manager.appspot.com",
+    messagingSenderId: "213181401102"
 };
 const app = firebase.initializeApp(config);
 
