@@ -88,7 +88,7 @@ var notificationListElement = document.getElementById('list');
 
 
 
-const commission = [{ name: "good", pcnt: "2" }, { name: "dog", pcnt: "3" }, { name: "bad", pcnt: "20" }, { name: "baby", pcnt: "23" }];
+const commission = [{ name: "jean", pcnt: "2" }, { name: "bag", pcnt: "3" }, { name: "tops", pcnt: "20" }, { name: "slippers", pcnt: "23" }];
 
 function findMatches(wordToMatch, commission) {
     return commission.filter(place => {

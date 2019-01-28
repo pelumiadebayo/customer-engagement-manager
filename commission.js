@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
         draggable: true
     });
 });
-// let commissionRate = [];
+let commissionRate = [];
 
 document.querySelector(".collapsible-header").addEventListener("click", toggle);
 document.querySelector(".sidenav-trigger").addEventListener("click", slide);
@@ -42,11 +42,11 @@ loadMessages = () => {
     db.collection("commission").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             console.log(`${doc.id} => ${doc.data().prodct}`);
-            displayMessage(doc.id, doc.data().prodct, doc.data().percent)
-            // let obj = {
-            //     name: doc.data().prodct, pcnt: doc.data().percent
-            // }
-            // commissionRate.push(obj);
+            displayMessage(doc.id, doc.data().product, doc.data().percent)
+            let obj = {
+                name: doc.data().prodct, pcnt: doc.data().percent
+            }
+            commissionRate.push(obj);
         });
 
     });
@@ -58,7 +58,7 @@ document.getElementById("btn").addEventListener("click", (e) => {
     let percent = document.getElementById("per").value;
 
     db.collection("commission").add({
-        prodct: product,
+        product: product,
         percent: percent
     })
         .then(function (docRef) {
