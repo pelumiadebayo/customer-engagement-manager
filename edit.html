@@ -21,12 +21,11 @@
             storageBucket: "aiiburtel-5a752.appspot.com",
             messagingSenderId: "39758121316"
         };
-
     </script>
     <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
-    <title>Commission</title>
+    <title>Edit Call Guide</title>
 </head>
 
 <body>
@@ -38,7 +37,8 @@
                         <div class="col s12 m10 offset-m1">
                             <a href="#" data-target="slide-out" class=" top-nav sidenav-trigger  hide-on-large-only">
                                 <i class="material-icons">menu</i></a>
-                            <a class="card-title black-text">Product Commission</a>
+                            <a class="card-title black-text">Edit Call Guide</a>
+
                         </div>
                     </div>
                 </div>
@@ -67,6 +67,7 @@
                             </div>
                         </div>
                     </a>
+
                 </div>
             </li>
             <li>
@@ -78,7 +79,7 @@
                                 <span class="new badge">4</span>
                             </div>
                             <div class="collapsible-body">
-                                <p>No notification yet</p>
+                                <p>No notification yet.</p>
                             </div>
                         </li>
                     </ul>
@@ -101,61 +102,42 @@
             <li>
                 <div class="divider white"></div>
             </li>
-            <li><a class="waves-effect" href="#!"><i class="material-icons">phonelink_ring</i>Call Guideline</a></li>
+            <li><a class="waves-effect" href="callGuide.html"><i class="material-icons">phonelink_ring</i>Call
+                    Guideline</a></li>
             <li>
                 <div class="divider white"></div>
             </li>
-            <li><a class="waves-effect" href="mail.html"><i class="material-icons">mail</i>Mailling System</a></li>
+            <li><a class="waves-effect" href="mail.html"><i class="material-icons">mail</i>Mailing system</a></li>
             <li>
                 <div class="divider white"></div>
             </li>
             <li><a class="waves-effect" href="#!"><i class="material-icons">settings_phone</i>Voice Recorder</a></li>
         </ul>
     </header>
+
     <main>
-        <div class="container ">
+        <div id="one" class="container ">
             <div class="row ">
                 <div class="col s12 m8 offset-m1 xl7 offset-xl1 ">
                     <div id="valign" class="section scrollspy ">
-                        <div class="row s12 m6 ">
-                            <div class="card blue-grey darken-1  z-depth-2 card-content white-text center-align">
-                                <div class=" main">
-                                    <table id="commissions" class=" container">
-                                        <thead>
-                                            <tr>
-                                                <th>Product</th>
-                                                <th>Percentage</th>
-                                            </tr>
-                                        </thead>
-
-                                    </table>
+                        <div class="row s12 ">
+                            <div class="  card-content white-text center-align">
+                                <div id="inner" class="col">
+                                    <textarea id="editor"></textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <button id="submit" class="btn waves-effect waves-ligh" type="submit" name="action">save
+                <i class="material-icons right">save</i>
+            </button>
         </div>
-        <div class="fixed-action-btn">
 
-            <form id="form">
-                <div class="input-field col s6">
-                    <input id="pro" type="text" class="validate">
-                    <label for="first_name">Product</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="per" type="number" class="validate">
-                    <label for="first_name">Percentage</label>
-                </div>
-            </form>
-            <a id="btn" class="btn-floating btn-large ">
-                <i class="large material-icons">add</i>
-            </a>
-        </div>
-        </div>
     </main>
     <script type="text/javascript" src="js/materialize.js"></script>
-    <script type="text/javascript" src="commission.js"></script>
+    <script type="text/javascript" src="edit.js"></script>
 </body>
 
 </html>

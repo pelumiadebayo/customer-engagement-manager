@@ -44,6 +44,7 @@ $(document).ready(function () {
             });
         });
     }
+
     function displayContacts(key, name, phone) {
         var tbody = document.getElementById(key);
         // If an element for that message does not exists yet we create it.
@@ -63,11 +64,15 @@ $(document).ready(function () {
     function toggle() {
         document.querySelector(".collapsible-body").classList.toggle("active")
     }
-
-   
+    var request = new Request("http://api.smartsmssolutions.com/smsapi.php?username=adepelumi1996@gmail.com&password=sapphire001&balance=true&");
+    fetch(request, {
+        mode: 'no-cors',
+        method: "GET",
+    }).then(response => { if (response.ok) { return response.text() } })
+        .then(balance => alert("balance is:", balance))
+        .catch(error => console.log(error))
 
     $('#send').click(function (e) {
-
         e.preventDefault();
         const username = $('#username').val();
         const password = $('#password').val();
@@ -84,7 +89,7 @@ $(document).ready(function () {
                 url: myUrl,
                 response: "text",
                 success: function (response) {
-                    console.log("message sent");
+                    alert("message sent successfully");
                 },
                 error: function (request, status, error) {
                     alert(error);

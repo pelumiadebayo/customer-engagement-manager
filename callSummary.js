@@ -38,6 +38,8 @@ submitbutton.addEventListener("click", (e) => {
     var summary = document.getElementById("summary").value;
     var fad = document.getElementById("fad").value;
     var others = document.getElementById("others").value;
+    var time = document.getElementById("time").value;
+
 
     console.log(name);
 
@@ -47,7 +49,8 @@ submitbutton.addEventListener("click", (e) => {
         purposeOfCall: purpose,
         callSummary: summary,
         futureAppointmentDate: fad,
-        others: others
+        others: others,
+        time: time
     })
         .then(function (docRef) {
             console.log("Document written with ID: ", docRef.id);

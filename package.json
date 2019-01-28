@@ -9,5 +9,14 @@
   },
   "author": "Pelumi Adebayo adepelumi1996@gmail.com",
   "license": "ISC",
-  "NODE_VERSION": "5.6.0"
+  "NODE_VERSION": "5.6.0",
+  "dependencies": {
+    "mailgun-js": "^0.22.0",
+    "moment": "^2.24.0",
+    "nodemailer": "^5.1.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1"
+  }
 }

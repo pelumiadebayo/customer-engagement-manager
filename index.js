@@ -1,3 +1,21 @@
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyCxyqOXzuvtsGMMemiIVfOIgnSnj9BF6v4",
+    authDomain: "aiiburtel-5a752.firebaseapp.com",
+    databaseURL: "https://aiiburtel-5a752.firebaseio.com",
+    projectId: "aiiburtel-5a752",
+    storageBucket: "aiiburtel-5a752.appspot.com",
+    messagingSenderId: "39758121316"
+};
+var app = firebase.initializeApp(config);
+
+// Initialize Cloud Firestore through Firebase
+const db = firebase.firestore(app);
+
+// Disable deprecated features
+const settings = { timestampsInSnapshots: true };
+db.settings(settings);
+
 document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.fixed-action-btn');
     var instances = M.FloatingActionButton.init(elems, {
@@ -26,6 +44,49 @@ function toggleAction() {
 function slide() {
     document.querySelector(".sidenav").classList.toggle("listslide");
 }
+let listLength;
+
+
+const currentDate = new Date();
+// console.log(currentDate.toDateString());
+notification = () => {
+    db.collection("vendorCallSummary").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // console.log(`${doc.id} => ${doc.data().futureAppointmentDate}`);
+            const notificationDate = new Date(`${doc.data().futureAppointmentDate}` + ` ${doc.data().time}`)
+            // console.log(date);
+            if (currentDate.toDateString() === notificationDate.toDateString() && currentDate.getHours() === notificationDate.getHours()) {
+                displayNotification(doc.id, `You need to call ${doc.data().name} by ${doc.data().time} today`);
+                document.getElementById("noticeSpan").innerHTML = `${doc.data().length}`;
+            } else {
+                displayNotification(0, "No notification yet");
+            }
+        });
+    });
+}
+notification();
+let NOTIFICATION_TEMPLATE =
+    '<ul id="ul_o">' +
+    '<li class="notify"></li>' +
+    '</ul>'
+    ;
+// Displays a notification in the UI.
+function displayNotification(index, notification) {
+    var ul = document.getElementById(index);
+    // If an element for that message does not exists yet we create it.
+    if (!ul) {
+        var container = document.createElement('ul');
+        container.innerHTML = NOTIFICATION_TEMPLATE;
+        ul = container.firstChild;
+        ul.setAttribute('id', index);
+        notificationListElement.appendChild(ul);
+    }
+    ul.querySelector('.notify').innerHTML = notification;
+    // listLength = document.getElementById("ul_o").getElementsByTagName("li").length;
+}
+var notificationListElement = document.getElementById('list');
+
+
 
 const commission = [{ name: "good", pcnt: "2" }, { name: "dog", pcnt: "3" }, { name: "bad", pcnt: "20" }, { name: "baby", pcnt: "23" }];
 
@@ -56,17 +117,16 @@ const priceTag = document.querySelector(".amount");
 let amount;
 let _value;
 
-searchInput.addEventListener("keydown", displayMatches);
 searchInput.addEventListener("click", displayMatches)
 priceTag.addEventListener("keyup", submit);
-window.addEventListener("load", fill);
+document.addEventListener("DOMContentLoaded", fill);
 
 function fill(e) {
     e.preventDefault();
     for (var i = 0; i < commission.length; i++) {
-        // var optionNode = datalist.createElement("option");
-        datalist.createElement("option").value = `${search}`;
-        datalist.createElement("option").appendChild(document.createTextNode(`${percentage}`));
+        let optionNode = datalist.createElement("option");
+        optionNode.value = `${search}`;
+        optionNode.appendChild(document.createTextNode(`${percentage}`));
     }
 }
 
@@ -95,6 +155,5 @@ input.addEventListener('change', () => {
     }
     console.log('The value is:', _value);
 })
-
 
 

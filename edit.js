@@ -12,28 +12,39 @@ const app = firebase.initializeApp(config);
 // Initialize Cloud Firestore through Firebase
 const db = firebase.firestore(app);
 
-
 // Disable deprecated features
 const settings = { timestampsInSnapshots: true };
-db.settings(settings);
+db.settings(settings)
+// document.addEventListener('DOMContentLoaded', loadContent)
 
 
+let editorcontent = document.getElementById("editor");
+
+editorcontent.addEventListener("change", (e) => {
+    e.preventDefault();
+})
+
+document.getElementById("submit").addEventListener("click", () => {
+    console.log(editorcontent.value);
+    db.collection("callGuide").doc("content").update({
+        content: editorcontent.value
+    })
+        .then(function () {
+            window.location.href = "callGuide.html";
+        })
+        .catch(function (error) {
+            console.error("Error adding document: ", error);
+            alert("unable to saved, check internet connection")
+        });
+});
 loadContent = () => {
     db.collection("callGuide").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-            console.log(`${doc.id} => ${doc.data().name}`);
-            displayContent(doc.id, doc.data().content);
+            editorcontent.value = doc.data().content;
         });
     });
 }
-// Displays a content in the UI.
-function displayContent(key, content) {
-    contentView.innerHTML = content;
-}
-var contentView = document.getElementById('inner');
-
 loadContent();
-
 document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.timepicker');
     var instances = M.Timepicker.init(elems, {
@@ -57,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.querySelector(".collapsible-header").addEventListener("click", toggle);
-document.querySelector(".fixed-action-btn").addEventListener("click", toggleAction);
+// document.querySelector(".fixed-action-btn").addEventListener("click", toggleAction);
 document.querySelector(".sidenav-trigger").addEventListener("click", slide);
 
 function toggle() {
@@ -69,6 +80,5 @@ function toggleAction() {
 function slide() {
     document.querySelector(".sidenav").classList.toggle("listslide");
 }
-let saved = document.getElementById("main");
 
 

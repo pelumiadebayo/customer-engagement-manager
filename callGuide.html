@@ -12,7 +12,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="index.css">
+    <script>
+        var config = {
+            apiKey: "AIzaSyCxyqOXzuvtsGMMemiIVfOIgnSnj9BF6v4",
+            authDomain: "aiiburtel-5a752.firebaseapp.com",
+            databaseURL: "https://aiiburtel-5a752.firebaseio.com",
+            projectId: "aiiburtel-5a752",
+            storageBucket: "aiiburtel-5a752.appspot.com",
+            messagingSenderId: "39758121316"
+        };
 
+
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
     <title>Call Guide</title>
 </head>
 
@@ -104,16 +118,15 @@
     </header>
 
     <main>
-        <div id="one" class="container ">
+        <div class="container ">
             <div class="row ">
                 <div class="col s12 m8 offset-m1 xl7 offset-xl1 ">
                     <div id="valign" class="section scrollspy ">
-                        <div class="row s12 ">
-                            <div class="  card-content white-text center-align">
-                                <div id="outer" class="col  ">
-                                    <div class="inner">hgjjg</div>
-                                    <div class="inner">
-                                        <textarea id="editor">Click the Edit action bar to start writing Call Guide Line Here..</textarea>
+                        <div class="row s12 m6">
+                            <div class=" card-content   black-text center-align">
+                                <div class="main  ">
+                                    <div id="outer" class="col  ">
+                                        <div id="inner"></div>
                                     </div>
                                 </div>
                             </div>
@@ -123,12 +136,7 @@
             </div>
 
             <div class="fixed-action-btn">
-                <a class="btn-floating btn-large ">
-                    <i class="large material-icons">save</i>
-                </a>
-            </div>
-            <div class="fixed-action-btn">
-                <a class="btn-floating btn-large ">
+                <a href="edit.html" class="btn-floating btn-large ">
                     <i class="large material-icons">edit</i>
                 </a>
             </div>
