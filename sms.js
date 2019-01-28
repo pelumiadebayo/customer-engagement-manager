@@ -64,13 +64,13 @@ $(document).ready(function () {
     function toggle() {
         document.querySelector(".collapsible-body").classList.toggle("active")
     }
-    var request = new Request("http://api.smartsmssolutions.com/smsapi.php?username=adepelumi1996@gmail.com&password=sapphire001&balance=true&");
-    fetch(request, {
-        mode: 'no-cors',
-        method: "GET",
-    }).then(response => { if (response.ok) { return response.text() } })
-        .then(balance => alert("balance is:", balance))
-        .catch(error => console.log(error))
+    // var request = new Request("http://api.smartsmssolutions.com/smsapi.php?username=adepelumi1996@gmail.com&password=sapphire001&balance=true&");
+    // fetch(request, {
+    //     mode: 'no-cors',
+    //     method: "GET",
+    // }).then(response => { if (response.ok) { return response.text() } })
+    //     .then(balance => alert("balance is:", balance))
+    //     .catch(error => console.log(error))
 
     $('#send').click(function (e) {
         e.preventDefault();

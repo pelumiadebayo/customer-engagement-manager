@@ -57,7 +57,7 @@ notification = () => {
             // console.log(date);
             if (currentDate.toDateString() === notificationDate.toDateString() && currentDate.getHours() === notificationDate.getHours()) {
                 displayNotification(doc.id, `You need to call ${doc.data().name} by ${doc.data().time} today`);
-                document.getElementById("noticeSpan").innerHTML = `${doc.data().length}`;
+                document.getElementById("noticeSpan").classList.remove("white");
             } else {
                 displayNotification(0, "No notification yet");
             }
