@@ -17,16 +17,7 @@ const db = firebase.firestore(app);
 const settings = { timestampsInSnapshots: true };
 db.settings(settings);
 
-// const messaging = firebase.messaging();
-// // Add the public key generated from the console here.
-// messaging.usePublicVapidKey("BJ3AfB1q3oONq15N4cFunPqZBLi0WXKJrHDFAd3YNT_VbJqcRozpUl36XGQHiIkYeLn-SLYCYZut5hM1S90dSfI");
-// messaging.requestPermission().then(function () {
-//     console.log("permitted");
 
-// }).catch(function (err) {
-//     console.log("not permitted");
-
-// })
 const submitbutton = document.getElementById("submit");
 
 submitbutton.addEventListener("click", (e) => {
@@ -50,7 +41,7 @@ submitbutton.addEventListener("click", (e) => {
         purposeOfCall: purpose,
         callSummary: summary,
         futureAppointmentDate: fad,
-        email:email,
+        email: email,
         others: others,
         time: time
     })
@@ -64,48 +55,22 @@ submitbutton.addEventListener("click", (e) => {
         });
 });
 
-
-
-// getAllRestaurants = function (renderer) {
-//     var query = firebase.firestore()
-//         .collection('vendorCallSummary')
-//         .orderBy('fad', 'name')
-//         .limit(50);
-
-//     this.getDocumentsInQuery(query, renderer);
-// };
-
-// getDocumentsInQuery = function (query, renderer) {
-//     query.onSnapshot(function (snapshot) {
-//         if (!snapshot.size) return renderer.empty(); // Display "There are no record.
-
-//         snapshot.docChanges().forEach(function (change) {
-//             if (change.type === 'removed') {
-//                 renderer.remove(change.doc);
-//             } else {
-//                 renderer.display(change.doc);
-//             }
-//         });
-//     });
-// };
 document.addEventListener('DOMContentLoaded', function () {
     var elem = document.querySelectorAll('.tabs');
     var instance = M.Tabs.getInstance(elem, {
         swipeable: true,
         responsiveThreshold: "1024px"
     });
-    // instance.select('tabs');
-    // instance.updateTabIndicator();
 
 });
 
 document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.datepicker');
-    var instances = M.Datepicker.init(elems, {
+    var instance = M.Datepicker.init(elems, {
         showMonthAfterYear: true,
-        autoClose: true
+        autoClose: true,
+        setDefaultDate: false
     });
-    // instance.gotoDate(new Date());
 });
 document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.timepicker');
@@ -144,7 +109,6 @@ function slide() {
 }
 
 const currentDate = new Date();
-// console.log(currentDate.toDateString());
 notification = () => {
     db.collection("vendorCallSummary").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {

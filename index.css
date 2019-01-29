@@ -3,6 +3,42 @@
     width: 180px;
     height: 30px;
 }
+/* main {
+ background-image: linear-gradient(
+      rgba(243, 239, 239, 0.664), 
+      rgba(131, 174, 185, 0.45)
+    ), url("logo/just.png");
+ height: 100vh;
+  max-width: 100% ;
+} @media only screen and (min-width : 500px) {
+    main {
+        background-image: linear-gradient(
+            rgba(243, 239, 239, 0.664), 
+            rgba(131, 174, 185, 0.45)
+            ), url("logo/just.png");
+        height: 100vh;
+        }
+    } */
+
+    @media (max-width: 480px) {
+    main {
+            background-image: linear-gradient(
+            rgba(243, 239, 239, 0.664), 
+            rgba(131, 174, 185, 0.45)
+            ), url("logo/smalljust.png");
+        height: 100vh;
+    }
+    }
+    @media (min-width: 481px) {
+    main {
+                background-image: linear-gradient(
+            rgba(243, 239, 239, 0.664), 
+            rgba(131, 174, 185, 0.45)
+            ), url("logo/just.png");
+        height: 100vh;
+    }
+    }
+
 .pc{
     margin-top: -10px;
 }
