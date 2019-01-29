@@ -38,6 +38,7 @@ submitbutton.addEventListener("click", (e) => {
     var summary = document.getElementById("summary").value;
     var fad = document.getElementById("fad").value;
     var others = document.getElementById("others").value;
+    var email = document.getElementById("email").value;
     var time = document.getElementById("time").value;
 
 
@@ -49,6 +50,7 @@ submitbutton.addEventListener("click", (e) => {
         purposeOfCall: purpose,
         callSummary: summary,
         futureAppointmentDate: fad,
+        email:email,
         others: others,
         time: time
     })

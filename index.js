@@ -86,19 +86,29 @@ function displayNotification(index, notification) {
 }
 var notificationListElement = document.getElementById('list');
 
+const commissionrate = [];
 
+loadCommission = () => {
+    db.collection("commission").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            let obj = {
+                name: `${doc.data().product}`, pcnt: `${doc.data().percent}`
+            }
+            commissionrate.push(obj);
+        });
+    });
+}
+loadCommission();
 
-const commission = [{ name: "jean", pcnt: "2" }, { name: "bag", pcnt: "3" }, { name: "tops", pcnt: "20" }, { name: "slippers", pcnt: "23" }];
-
-function findMatches(wordToMatch, commission) {
-    return commission.filter(place => {
+function findMatches(wordToMatch, commissionrate) {
+    return commissionrate.filter(place => {
         const regex = new RegExp(wordToMatch, 'gi');
         return place.name.match(regex) || place.pcnt.match(regex)
     });
 }
 
 function displayMatches() {
-    const matchArray = findMatches(this.value, commission);
+    const matchArray = findMatches(this.value, commissionrate);
     const html = matchArray.map(category => {
         const regex = new RegExp(this.value, 'i');
         let search = category.name.replace(regex, `${this.value}`);
@@ -123,7 +133,7 @@ document.addEventListener("DOMContentLoaded", fill);
 
 function fill(e) {
     e.preventDefault();
-    for (var i = 0; i < commission.length; i++) {
+    for (var i = 0; i < commissionrate.length; i++) {
         let optionNode = datalist.createElement("option");
         optionNode.value = `${search}`;
         optionNode.appendChild(document.createTextNode(`${percentage}`));

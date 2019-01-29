@@ -38,20 +38,7 @@ document.querySelector(".sidenav-trigger").addEventListener("click", slide);
 function toggle() {
     document.querySelector(".collapsible-body").classList.toggle("active");
 }
-loadMessages = () => {
-    db.collection("commission").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            console.log(`${doc.id} => ${doc.data().prodct}`);
-            displayMessage(doc.id, doc.data().product, doc.data().percent)
-            let obj = {
-                name: doc.data().prodct, pcnt: doc.data().percent
-            }
-            commissionRate.push(obj);
-        });
 
-    });
-}
-loadMessages();
 document.getElementById("btn").addEventListener("click", (e) => {
     e.preventDefault();
     let product = document.getElementById("pro").value;
@@ -77,7 +64,20 @@ function slide() {
     document.querySelector(".sidenav").classList.toggle("listslide");
 }
 
-
+loadMessages = () => {
+    db.collection("commission").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // console.log(`${doc.id} => ${doc.data().product}`);
+            let obj = {
+                prod: `${doc.data().product}`, per: `${doc.data().percent}`
+            }
+            commissionRate.push(obj);
+            // console.log(commissionRate);
+            loadCommission(commissionRate)
+        });
+    });
+}
+loadMessages();
 
 var MESSAGE_TEMPLATE =
     '<tr class="highlight">' +
@@ -105,14 +105,13 @@ function displayMessage(index, product, percentage) {
 }
 var messageListElement = document.getElementById('commissions');
 
-// loadCommission = (...args) => {
-//     args.map(comm => {
-//         for (i = 0; i < comm.length; i++)
-//             displayMessage(i, comm[i].name, comm[i].pcnt)
-//     })
+loadCommission = (comm) => {
+    for (i = 0; i < comm.length; i++) {
+        displayMessage(i, comm[i].prod, comm[i].per);
+        // console.log(comm[i].prod);
+    }
+}
 
-// }
-// loadCommission(commissionRate);
 const currentDate = new Date();
 // console.log(currentDate.toDateString());
 notification = () => {
