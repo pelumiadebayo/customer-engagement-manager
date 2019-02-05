@@ -14,7 +14,9 @@ const db = firebase.firestore(app);
 
 
 // Disable deprecated features
-const settings = { timestampsInSnapshots: true };
+const settings = {
+    timestampsInSnapshots: true
+};
 db.settings(settings);
 
 
@@ -36,18 +38,21 @@ submitbutton.addEventListener("click", (e) => {
     console.log(name);
 
     db.collection("vendorCallSummary").add({
-        name: name,
-        phoneNo: phone,
-        purposeOfCall: purpose,
-        callSummary: summary,
-        futureAppointmentDate: fad,
-        email: email,
-        others: others,
-        time: time
-    })
+            name: name,
+            phoneNo: phone,
+            purposeOfCall: purpose,
+            callSummary: summary,
+            futureAppointmentDate: fad,
+            email: email,
+            others: others,
+            time: time,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+
+        })
         .then(function (docRef) {
             console.log("Document written with ID: ", docRef.id);
             alert("saved");
+            document.getElementById("form").reset();
         })
         .catch(function (error) {
             console.error("Error adding document: ", error);
@@ -75,7 +80,8 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.timepicker');
     var instances = M.Timepicker.init(elems, {
-        defaultTime: 'now', autoClose: true
+        defaultTime: 'now',
+        autoClose: true
     });
 });
 
@@ -101,9 +107,11 @@ document.querySelector(".sidenav-trigger").addEventListener("click", slide);
 function toggle() {
     document.querySelector(".collapsible-body").classList.toggle("active")
 }
+
 function toggleAction() {
     document.querySelector(".fixed-action-btn").classList.toggle("activeAction")
 }
+
 function slide() {
     document.querySelector(".sidenav").classList.toggle("listslide");
 }
@@ -128,8 +136,7 @@ notification();
 let NOTIFICATION_TEMPLATE =
     '<ul id="ul_o">' +
     '<li class="notify"></li>' +
-    '</ul>'
-    ;
+    '</ul>';
 // Displays a notification in the UI.
 function displayNotification(index, notification) {
     var ul = document.getElementById(index);

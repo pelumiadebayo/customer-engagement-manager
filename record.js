@@ -13,23 +13,16 @@ var app = firebase.initializeApp(config);
 const db = firebase.firestore(app);
 
 // Disable deprecated features
-const settings = { timestampsInSnapshots: true };
+const settings = {
+    timestampsInSnapshots: true
+};
 db.settings(settings);
 
-// function loadMessages() {
-//     // Loads the last 12 messages and listen for new ones.
-//     var callback = function (snap) {
-//         var data = snap.val();
-//         displayMessage(snap.key, data.name, data.phoneNo, data.futureAppointmentDate);
-//     };
+var data = [];
 
-//     firebase.database().ref('/vendorCallSummary/').limitToLast(12).on('child_added', callback);
-//     firebase.database().ref('/vendorCallSummary/').limitToLast(12).on('child_changed', callback);
-// }
 loadMessages = () => {
     db.collection("vendorCallSummary").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-            console.log(`${doc.id} => ${doc.data().name}`);
             displayMessage(doc.id, doc.data().name, doc.data().phoneNo, doc.data().futureAppointmentDate);
         });
     });
@@ -37,12 +30,12 @@ loadMessages = () => {
 
 // Template for messages.
 var MESSAGE_TEMPLATE =
-    '<tr class="highlight">' +
+    '<tr class="high">' +
     '<td class="name"></td>' +
     '<td class="contact"></td>' +
     '<td class="appointmentDate"></td>' +
-    '</tr>'
-    ;
+    '<td><button><i class="close material-icons">close</i></button></td>' +
+    '</tr>';
 
 // Displays a Message in the UI.
 function displayMessage(key, name, phone, appointment) {
@@ -60,15 +53,40 @@ function displayMessage(key, name, phone, appointment) {
     tbody.querySelector('.contact').textContent = phone;
     tbody.querySelector('.appointmentDate').textContent = appointment;
 }
+
 var messageListElement = document.getElementById('summary');
 loadMessages();
-
-document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.fixed-action-btn');
-    var instances = M.FloatingActionButton.init(elems, {
-        direction: 'top'
-    });
+var docId;
+var item;
+var con;
+$('#table').on('click', '.high', function () {
+    docId = $(this).closest('tr').attr('id');
+    // console.log(docId);
+    item = $(this).closest('tr').find('.name');
+    con = $(this).closest('tr').find('.contact');
+    $.each(con, function (key, value) {
+        // console.log($(value).text());
+        $('#phoneNo').val($(value).text());
+    })
+    $.each(item, function (key, value) {
+        // console.log($(value).text());
+        $('#name').val($(value).text());
+    })
+    $('#edit').removeClass('edit');
 });
+
+$('#table').on('click', '.close', () => {
+    console.log(docId);
+    db.collection("vendorCallSummary").doc(docId).delete().then(function () {
+        alert("Document successfully deleted!");
+        location.reload();
+
+    }).catch(function (error) {
+        alert("Error removing document: ", error);
+    });
+})
+
+
 document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.sidenav');
     var instances = M.Sidenav.init(elems, {
@@ -79,15 +97,13 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.querySelector(".collapsible-header").addEventListener("click", toggle);
-document.querySelector(".fixed-action-btn").addEventListener("hover", toggleAction);
 document.querySelector(".sidenav-trigger").addEventListener("click", slide);
 
 function toggle() {
     document.querySelector(".collapsible-body").classList.toggle("active")
 }
-function toggleAction() {
-    document.querySelector(".fixed-action-btn").classList.toggle("activeAction")
-}
+
+
 function slide() {
     document.querySelector(".sidenav").classList.toggle("listslide");
 }
@@ -108,12 +124,32 @@ notification = () => {
         });
     });
 }
+const editButton = document.getElementById('saveEdit');
+editButton.addEventListener('click', () => {
+    var name = document.getElementById('name').value;
+    var phone = document.getElementById('phoneNo').value;
+
+    db.collection("vendorCallSummary").doc(docId).update({
+            name: name,
+            phoneNo: phone
+        }).then(function () {
+            alert("Document successfully updated!");
+            $('#edit').addClass('edit');
+            location.reload();
+
+        })
+        .catch(function (error) {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+        });
+})
+
+
 notification();
 let NOTIFICATION_TEMPLATE =
     '<ul id="ul_o">' +
     '<li class="notify"></li>' +
-    '</ul>'
-    ;
+    '</ul>';
 // Displays a notification in the UI.
 function displayNotification(index, notification) {
     var ul = document.getElementById(index);

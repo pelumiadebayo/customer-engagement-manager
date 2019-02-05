@@ -1,47 +1,35 @@
-
-.imge{
+.imge {
     width: 180px;
     height: 30px;
 }
-/* main {
- background-image: linear-gradient(
-      rgba(243, 239, 239, 0.664), 
-      rgba(131, 174, 185, 0.45)
-    ), url("logo/just.png");
- height: 100vh;
-  max-width: 100% ;
-} @media only screen and (min-width : 500px) {
-    main {
-        background-image: linear-gradient(
-            rgba(243, 239, 239, 0.664), 
-            rgba(131, 174, 185, 0.45)
-            ), url("logo/just.png");
-        height: 100vh;
-        }
-    } */
 
-    @media (max-width: 480px) {
-    main {
-            background-image: linear-gradient(
-            rgba(243, 239, 239, 0.664), 
-            rgba(131, 174, 185, 0.45)
-            ), url("logo/smalljust.png");
-        height: 100vh;
-    }
-    }
-    @media (min-width: 481px) {
-    main {
-                background-image: linear-gradient(
-            rgba(243, 239, 239, 0.664), 
-            rgba(131, 174, 185, 0.45)
-            ), url("logo/just.png");
-        height: 100vh;
-    }
-    }
 
-.pc{
+@media (max-width: 480px) {
+    main {
+        background-image: linear-gradient(rgba(243, 239, 239, 0.664),
+            rgba(131, 174, 185, 0.45)), url("logo/smalljust.png");
+        background-repeat: no-repeat;
+
+        background-attachment: fixed;
+
+    }
+}
+
+@media (min-width: 481px) {
+    main {
+        background-image: linear-gradient(rgba(243, 239, 239, 0.664),
+            rgba(131, 174, 185, 0.45)), url("logo/just.png");
+        background-repeat: no-repeat;
+
+        background-attachment: fixed;
+
+    }
+}
+
+.pc {
     margin-top: -10px;
 }
+
 .boxe {
     flex-basis: 400px;
     display: flex;
@@ -50,13 +38,14 @@
     max-height: 400px;
     align-items: flex-end
 }
+
 .contain {
     display: flex;
     flex-direction: column;
 }
 
 
-.inbox{
+.inbox {
     flex-basis: 200px;
     margin: 10px;
     max-height: 40vh;
@@ -64,97 +53,121 @@
     max-width: 40vh;
     background: yellow;
 }
-.sidenav{
+
+.sidenav {
     transform: translateX(-105%);
 }
-.slide{
+
+.slide {
     overflow: hidden;
 }
-.listslide{
-transform: translateX(0%);
+
+.listslide {
+    transform: translateX(0%);
 }
 
-.active{
-     display: block;
-}
-.activeAction{bottom: 45px; right: 24px;
+.active {
+    display: block;
 }
 
-
- .dropbtn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
+.activeAction {
+    bottom: 45px;
+    right: 24px;
 }
 
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #3e8e41;
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover,
+.dropbtn:focus {
+    background-color: #3e8e41;
 }
 
 #myInput {
-  border: box-sizing;
-  /* background-image: url('searchicon.png'); */
-  background-position: 14px 12px;
-  background-repeat: no-repeat;
-  font-size: 16px;
-  padding: 14px 20px 12px 45px;
-  border: none;
-  border-bottom: 1px solid #ddd;
+    border: box-sizing;
+    /* background-image: url('searchicon.png'); */
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
 }
 
-#myInput:focus {outline: 3px solid #ddd;}
+#myInput:focus {
+    outline: 3px solid #ddd;
+}
 
 .dropdown {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f6f6f6;
-  min-width: 230px;
-  overflow: auto;
-  border: 1px solid #ddd;
-  z-index: 1;
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    overflow: auto;
+    border: 1px solid #ddd;
+    z-index: 1;
 }
 
 .dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
 }
 
-.dropdown a:hover {background-color: #ddd;}
+.dropdown a:hover {
+    background-color: #ddd;
+}
 
-.show {display: block;}
+.show {
+    display: block;
+}
 
-form{
+form {
     padding: 10px
 }
- header, main, footer {
-      padding-left: 300px;
-    }
 
-    @media only screen and (max-width : 992px) {
-      header, main, footer {
+header,
+main,
+footer {
+    padding-left: 300px;
+}
+
+@media only screen and (max-width : 992px) {
+
+    header,
+    main,
+    footer {
         padding-left: 0;
-      }
     }
-#editor
-    {
-        margin: auto;
-        width: 300px;
-        min-height: 400px;
-    }
-     @media only screen and (min-width : 500px) {
-     #editor{
-        width: 500px;
-       min-height: 500px;
+}
 
-      }
+#editor {
+    margin: auto;
+    width: 300px;
+    min-height: 400px;
+}
+
+@media only screen and (min-width : 500px) {
+    #editor {
+        width: 500px;
+        min-height: 500px;
+
     }
+}
+
+.edit {
+    visibility: hidden;
+}

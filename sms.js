@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     var recipient;
     var contacts = [];
@@ -17,7 +16,9 @@ $(document).ready(function () {
     const db = firebase.firestore(app);
 
     // Disable deprecated features
-    const settings = { timestampsInSnapshots: true };
+    const settings = {
+        timestampsInSnapshots: true
+    };
     db.settings(settings);
 
     var MESSAGE_TEMPLATE =
@@ -30,8 +31,7 @@ $(document).ready(function () {
         '<span></span>' +
         '</label>' +
         '</td>' +
-        '</tr>'
-        ;
+        '</tr>';
 
     var messageListElement = document.getElementById('summary');
     loadContact = () => {
@@ -61,6 +61,7 @@ $(document).ready(function () {
     loadContact();
 
     document.querySelector(".collapsible-header").addEventListener("click", toggle);
+
     function toggle() {
         document.querySelector(".collapsible-body").classList.toggle("active")
     }
@@ -123,8 +124,6 @@ $(document).ready(function () {
     //     });
     // }
     // $('input[name=options]').checkboxMaster(contacts);
-
-
 })
 document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.fixed-action-btn');
@@ -147,6 +146,7 @@ document.querySelector(".sidenav-trigger").addEventListener("click", slide);
 function toggleAction() {
     document.querySelector(".fixed-action-btn").classList.toggle("activeAction")
 }
+
 function slide() {
     document.querySelector(".sidenav").classList.toggle("listslide");
 }
